@@ -7,7 +7,9 @@ const SECRET_KEY = "ak37ffj30smr8kw7";
 
 const users = [
   { username: "user", password: "user123", role: "user" },
+  { username: "user", password: "user123", role: "user123" },
   { username: "admin", password: "admin123", role: "admin" },
+  { username: "admin", password: "admin123", role: "admin123" },
 ];
 
 app.use(express.json());
@@ -87,7 +89,7 @@ app.get("/profile", (req, res) => {
 
 app.get("/admin-dashboard", (req, res) => {
   try {
-    if (req.user.role == "admin")
+    if (req.user.role == "admin" || req.user.role == "admin123")
       return res
         .status(200)
         .send({ message: "Welcome to the admin dashboard!" });
